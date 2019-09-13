@@ -1,0 +1,51 @@
+{
+    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "location": {
+            "value": "local"
+        },
+        "virtualMachineName": {
+            "value": "AnsibleHost"
+        },
+        "virtualMachineSize": {
+            "value": "Standard_F4s_v2"
+        },
+        "adminUsername": {
+            "value": "ansible"
+        },
+        "virtualNetworkName": {
+            "value": "AnsiblePOC-vnet"
+        },
+        "networkInterfaceName": {
+            "value": "ansiblehost760"
+        },
+        "diskSizeGB": {
+            "value": "30"
+        },
+        "networkSecurityGroupName": {
+            "value": "AnsibleHost-nsg"
+        },
+        "adminPassword": {
+            "value": null
+        },
+        "addressPrefix": {
+            "value": "10.1.3.0/28"
+        },
+        "subnetName": {
+            "value": "default"
+        },
+        "subnetPrefix": {
+            "value": "10.1.3.0/28"
+        },
+        "publicIpAddressName": {
+            "value": "AnsibleHost-ip"
+        },
+        "publicIpAddressType": {
+            "value": "Dynamic"
+        },
+        "publicIpAddressSku": {
+            "value": "Basic"
+        }
+    }
+}
