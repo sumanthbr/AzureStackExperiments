@@ -1,0 +1,24 @@
+---
+- hosts: localhost
+  tasks:
+    - name: Create a resource group
+      azure_rm_resourcegroup:
+            name: "{{ var_resourceGroupName }}"
+            location: "{{ var_regionname  }}"
+    
+    - name: Set the Environment
+      shell: |
+           az cloud register -n AzureStackAdmin --endpoint-resource-manager "https://adminmanagement.{{var_regionname}}.{{var_tenantname}}" --suffix-storage-endpoint "{{var_regionname}}.{{var_tenantname}}" --suffix-keyvault-dns "adminvault.{{var_regionname}}.{{var_tenantname}}"
+           az cloud set -n AzureStackAdmin
+           az cloud update --profile 2019-03-01-hybrid
+
+    - name: AZ Login to Azure
+      shell: >
+           az login --service-principal
+           -u "{{ AZURE_RM_CLIENTID }}"
+           -p "{{ AZURE_RM_SECRET }}"
+           --tenant "{{ AZURE_RM_TENANTID }}" && az account set --subscription "{{ var_azure_rm_subid }}"
+
+    - name: Get Resource ID
+      shell: az group show -n {{ var_resourceGroupName }} --query id
+      register: resourceId

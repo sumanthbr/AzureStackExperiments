@@ -1,0 +1,4 @@
+ansible_env:
+ AZURE_RM_CLIENTID: "<client ID of the SPN created>"
+ AZURE_RM_SECRET: "<Secret of SPN>"
+ AZURE_RM_TENANTID: "<tenant ID of the Azure Stack>"
